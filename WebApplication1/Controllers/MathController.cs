@@ -4,8 +4,12 @@ namespace WebApplication1.Controllers;
 
 public class MathController : Controller
 {
-    public IActionResult Sum(int a, int b)
+    public IActionResult Index()
     {
-        return Content((a + b).ToString());
+        return View("Index");
+    }
+    public int Sum(int a, int b)
+    {
+        return (a + b);
     }
 }

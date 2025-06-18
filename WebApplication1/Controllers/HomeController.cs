@@ -23,11 +23,12 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
-        return View();
+        return View("Index", new MyTask() { Name = "adbc" });
     }
     
     public IActionResult Tasks(string name = null)
     {
+        _logger.LogInformation($"Name: {name}");
         return Content("Tasks " + repository.getById(name));
     }
 
