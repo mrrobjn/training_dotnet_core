@@ -25,7 +25,25 @@ public class HomeController : Controller
     {
         return View("Index", new MyTask() { Name = "adbc" });
     }
+
+    [HttpGet]
+    // [Route("/api/users")]
+    public IActionResult Users([FromServices] IUserRepository userRepository)
+    {
+        var users = userRepository.Users;
+        // _logger.LogInformation(users.Join());
+        return View(new User() { Id = "adbc", Users = users });
+    }
     
+    [HttpPost]
+    // [Route("/api/users")]
+    public IActionResult Users([FromServices] IUserRepository userRepository, [FromForm] string user)
+    {
+        userRepository.Add(user);
+        return Content(user);
+    }
+    
+    [HttpGet]
     public IActionResult Tasks(string name = null)
     {
         _logger.LogInformation($"Name: {name}");

@@ -1,0 +1,16 @@
+@model WebApplication1.Models.User
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div>
+    <h1>UserId: @Model.Id</h1>
+    <h2>User List:</h2>
+    <ul>
+        @foreach (var user in Model.Users)
+        {
+            <li>@user</li>
+        }
+    </ul>
+</div>
