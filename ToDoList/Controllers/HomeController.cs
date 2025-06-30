@@ -1,24 +1,39 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Models;
+using UseCases;
 
 namespace ToDoList.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly ToDoListManager _listManager;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ToDoListManager listManager, ILogger<HomeController> logger)
     {
         _logger = logger;
+        _listManager = listManager;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var todoItems = _listManager.GetTodoItems();
+        
+        return View(new TodoListViewModel() { Items = todoItems.Select(ti => new Item()
+        {
+            Id = ti.Id,
+            Title = ti.Title,
+            IsComplete = ti.IsComplete
+        }) });
     }
 
-    public IActionResult Privacy()
+    public IActionResult Create()
+    {
+        return RedirectToAction("Add");
+    }
+    
+    public IActionResult Add()
     {
         return View();
     }

@@ -2,9 +2,9 @@
 
 namespace UseCases;
 
-public class ToDoListManager(ToDoItemRepository repository)
+public class ToDoListManager(IToDoItemRepository repository)
 {
-    private readonly ToDoItemRepository _repository = repository;
+    private readonly IToDoItemRepository _repository = repository;
     
     public IEnumerable<TodoItem> GetTodoItems()
     {
@@ -18,7 +18,7 @@ public class ToDoListManager(ToDoItemRepository repository)
     
     public void MarkItemAsComplete(int id)
     {
-        var item = _repository.searchTodoItems(id);
+        var item = _repository.SearchTodoItems(id);
         item.IsComplete = true;
         _repository.UpDateTodoItem(item);
     }

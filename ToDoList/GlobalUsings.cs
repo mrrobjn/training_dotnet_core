@@ -1,6 +1,3 @@
-﻿namespace ToDoList;
-
-public class GlobalUsings
-{
-    
-}
+﻿global using Entities;
+global using Infrastructure;
+global using UseCases;

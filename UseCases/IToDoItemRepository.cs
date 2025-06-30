@@ -1,7 +1,7 @@
 ﻿namespace UseCases;
 using Entities;
 
-public interface ToDoItemRepository
+public interface IToDoItemRepository
 {
     public IEnumerable<TodoItem> GetTodoItems();
     public void Add(TodoItem item);
