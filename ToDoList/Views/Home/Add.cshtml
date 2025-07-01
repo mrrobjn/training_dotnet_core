@@ -4,11 +4,12 @@
     ViewData["Title"] = "Add Item";
 }
 
-<form asp-action="Edit" method="post">
+<form asp-action="Add" method="post">
     <div class="form-group">
         <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+        <input asp-for="Title" class="form-control" value=""/>
+        @* <span asp-validation-for="Title" class="text-danger"></span> *@
     </div>
     <button type="submit" class="btn btn-primary mt-2">Add Item</button>
+    <a href="/" class="btn btn-secondary mt-2">Cancel</a>
 </form>

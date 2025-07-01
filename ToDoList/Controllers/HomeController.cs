@@ -33,9 +33,22 @@ public class HomeController : Controller
         return RedirectToAction("Add");
     }
     
+    [HttpGet]
     public IActionResult Add()
     {
         return View();
+    }
+    
+    [HttpPost]
+    public IActionResult Add(Item item)
+    {
+        _listManager.AddTodoItem(new TodoItem()
+        {
+            Id = item.Id,
+            Title = item.Title,
+            IsComplete = false,
+        });
+        return RedirectToAction("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
